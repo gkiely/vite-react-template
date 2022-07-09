@@ -31,7 +31,6 @@ afterEach(() => server.resetHandlers());
 
 describe('App', () => {
   it('should render', async () => {
-    console.log('ran');
     render(<App />);
     expect(screen.getByText('Hello Vite + React!')).toBeInTheDocument();
     const button = screen.getByRole('button');
