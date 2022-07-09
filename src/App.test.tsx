@@ -12,7 +12,7 @@ const posts = [
 ];
 
 export const restHandlers = [
-  rest.get('https://rest-endpoint.example/path/to/posts', (req, res, ctx) => {
+  rest.get('http://localhost:8080/api/posts', (_req, res, ctx) => {
     console.log('rest handler');
     return res(ctx.status(200), ctx.json(posts));
   }),

@@ -8,13 +8,9 @@ type Post = {
 };
 
 const fetchPosts = async (s: string): Promise<Post[]> => {
-  try {
-    const response = await fetch(s);
-    const data = await response.json();
-    return data;
-  } catch (e) {
-    return [];
-  }
+  const response = await fetch(s);
+  const data = await response.json();
+  return data;
 };
 
 function App() {
@@ -23,13 +19,13 @@ function App() {
 
   useEffect(() => {
     console.log('fetching');
-    fetchPosts('/api/posts')
+    fetchPosts('http://localhost:8080/api/posts')
       .then((data) => {
-        console.log('fetched posts');
+        console.log('fetched posts', data);
         setPosts(data);
       })
       .catch((err) => {
-        console.error('Error fetching', err);
+        console.error('Error fetching', err.toString());
       });
   }, []);
 
