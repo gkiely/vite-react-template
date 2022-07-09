@@ -8,7 +8,9 @@ type Post = {
 };
 
 const fetchPosts = async (s: string): Promise<Post[]> => {
+  console.log('fetching', s);
   const response = await fetch(s);
+  console.log('fetch response', response);
   const data = await response.json();
   return data;
 };
@@ -18,7 +20,6 @@ function App() {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    console.log('fetching');
     fetchPosts('http://localhost:8080/api/posts')
       .then((data) => {
         console.log('fetched posts', data);
